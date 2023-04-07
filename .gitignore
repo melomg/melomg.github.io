@@ -9,6 +9,10 @@ _site/
 vendor/
 Gemfile.lock
 
+
+# Intellij
+.idea
+
 # Gems
 *.gem
 
