@@ -18,13 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Melih Gültekin
+title: Hello, I'm Melih Gültekin
+description: >- # this means to ignore newlines until "email:"
+  Programmer, Android Developer, Clean Code follower, Open Source Lover
 email: mmelihgultekin@gmail.com
 author:
   name: Melih Gültekin
   email: mmelihgultekin@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Programmer, Android Developer, Clean Code follower, Open Source Lover
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -38,7 +38,6 @@ minima:
     twitter: melihgultekin
     github:  melomg
     linkedin: melih-gültekin-a2a41464
-    instagram: mmelih.gultekin
     medium: mmelihgultekin
 
 # twitter_username: 
