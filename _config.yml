@@ -18,13 +18,56 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Hello, I'm Melih Gültekin
-description: >- # this means to ignore newlines until "baseurl:"
-  Programmer, Android Developer, Clean Code follower, Open Source Lover
-# email: mmelihgultekin@gmail.com
-# author:
-#  name: Melih Gültekin
-#  email: mmelihgultekin@gmail.com
+title: Home
+description: Melih Gültekin
+keywords: "android, kotlin, java, flutter"
+skills: "Android Developer - Software Engineer - Freelancer"
+
+author:
+  name: Melih Gültekin
+  welcome: Hello, I'm Melih Gültekin, welcome to my page!
+  about: >- # this means to ignore newlines until "baseurl:"
+    Android Geek since 2014, Software Engineer, Programmer, Clean Code follower, Open Source lover!
+  social: Around the Web
+
+# Social networks usernames
+social:
+  - title: linkedin
+    url: https://www.linkedin.com/in/melih-g%C3%BCltekin-a2a41464/
+  - title: github
+    url: http://github.com/melomg
+  - title: twitter
+    url: https://twitter.com/melihgultekin
+  - title: medium
+    url: https://medium.com/@mmelihgultekin
+  - title: stack-overflow
+    url: https://stackoverflow.com/users/3918109/melomg
+
+# Footer settings
+footer:
+  copyright: Melih Gültekin
+  location: Location
+  credits: Credits
+
+# Postal address (add as many lines as necessary)
+address:
+  - line: Randstad Area, The Netherlands
+
+# Credits content
+credits: 'This website is built on top the <a href="https://github.com/jeromelachaud/freelancer-theme">Freelancer Theme</a>.'
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+#for posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: ""
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -32,17 +75,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
 minima:
   date_format: "%b %-d, %Y"
-
-  # generate social links in footer
-  social_links:
-    twitter: melihgultekin
-    github:  melomg
-    linkedin: melih-gültekin-a2a41464
-    medium: mmelihgultekin
-
-# twitter_username: 
-# github_username:  
-# linkedin_username:  
 
 # Build settings
 theme: minima
@@ -68,3 +100,16 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Google webmaster tools
+google_verify:
+
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:
+
+# Color settings (hex-codes without the leading hash-tag)
+color:
+  primary: 18bc9c #80B3FF
+  primary-rgb: "24,288,156" #"128,179,255"
+  secondary: 2c3e50 #FD6E8A
+  secondary-dark: 233140 #A2122F

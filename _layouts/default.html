@@ -3,19 +3,15 @@
 
   {%- include head.html -%}
 
-  <body>
+  <body id="page-top" class="index">
 
-    {%- include header.html -%}
+    {% include nav.html %}
+    {% include header.html %}
+    {% include about.html %}
 
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <!-- TODO uncomment this line {{ content }} -->
-
-        {%- include under-construction.html -%}
-      </div>
-    </main>
-
-    {%- include footer.html -%}
+    {% include footer.html %}
+    {% include modals.html %}
+    {% include js.html %}
 
   </body>
 
