@@ -25,9 +25,49 @@ skills: "Android Developer - Software Engineer - Freelancer"
 
 author:
   name: Melih Gültekin
+  welcome: Hello, I'm Melih Gültekin, welcome to my page!
   about: >- # this means to ignore newlines until "baseurl:"
-    Android Geek since 2014, Clean Code follower, Open Source lover!
-#  email: mmelihgultekin@gmail.com
+    Android Geek since 2014, Software Engineer, Programmer, Clean Code follower, Open Source lover!
+  social: Around the Web
+
+# Social networks usernames
+social:
+  - title: linkedin
+    url: https://www.linkedin.com/in/melih-g%C3%BCltekin-a2a41464/
+  - title: github
+    url: http://github.com/melomg
+  - title: twitter
+    url: https://twitter.com/melihgultekin
+  - title: medium
+    url: https://medium.com/@mmelihgultekin
+  - title: stack-overflow
+    url: https://stackoverflow.com/users/3918109/melomg
+
+# Footer settings
+footer:
+  copyright: Melih Gültekin
+  location: Location
+  credits: Credits
+
+# Postal address (add as many lines as necessary)
+address:
+  - line: Randstad Area, The Netherlands
+
+# Credits content
+credits: 'This website is built on top the <a href="https://github.com/jeromelachaud/freelancer-theme">Freelancer Theme</a>.'
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+#for posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: ""
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -73,42 +113,3 @@ color:
   primary-rgb: "24,288,156" #"128,179,255"
   secondary: 2c3e50 #FD6E8A
   secondary-dark: 233140 #A2122F
-
-# Footer settings
-footer:
-  copyright: Melih Gültekin
-  location: Location
-  social: Around the Web
-  credits: Credits
-
-# Social networks usernames
-social:
-  - title: linkedin
-    url: https://www.linkedin.com/in/melih-g%C3%BCltekin-a2a41464/
-  - title: github
-    url: http://github.com/melomg
-  - title: twitter
-    url: https://twitter.com/melihgultekin
-  - title: medium
-    url: https://medium.com/@mmelihgultekin
-  - title: stack-overflow
-    url: https://stackoverflow.com/users/3918109/melomg
-
-# Postal address (add as many lines as necessary)
-address:
-  - line: Randstad Area, The Netherlands
-
-# Credits content
-credits: 'This website is built on top of this free <a href="https://github.com/jeromelachaud/freelancer-theme">Freelancer Theme</a>.'
-
-# Build settings
-markdown: kramdown
-permalink: pretty
-
-#for posts
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      permalink: ""
