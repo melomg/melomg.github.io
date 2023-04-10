@@ -54,7 +54,7 @@ address:
   - line: Randstad Area, The Netherlands
 
 # Credits content
-credits: 'This website is built on top the <a href="https://github.com/jeromelachaud/freelancer-theme">Freelancer Theme</a>.'
+credits: 'This website is built on top the <a href="https://github.com/jeromelachaud/freelancer-theme" target="_blank">Freelancer Theme</a>.'
 
 # Build settings
 markdown: kramdown
