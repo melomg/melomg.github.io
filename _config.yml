@@ -27,7 +27,7 @@ author:
   name: Melih Gültekin
   welcome: Hello there! 👋 I'm Melih Gültekin. Welcome to my page!
   about: >- # this means to ignore newlines until "baseurl:"
-    Android Geek since 2014, Software Engineer, Programmer, Clean Code follower, Open Source lover!
+    Android Geek since 2014, Software Engineer, Programmer, Clean Code follower, Open Source lover 😌
   social: Around the Web
 
 # Social networks usernames
@@ -109,7 +109,10 @@ bing_verify:
 
 # Color settings (hex-codes without the leading hash-tag)
 color:
-  primary: 18bc9c #80B3FF
+  primary: fff #18bc9c #80B3FF
+  onPrimary: 000000 #80B3FF
+  outline: 000000 #80B3FF
   primary-rgb: "24,288,156" #"128,179,255"
   secondary: 2c3e50 #FD6E8A
-  secondary-dark: 233140 #A2122F
+  secondaryDark: 233140 #A2122F
+  tertiary: 18bc9c #18bc9c #80B3FF

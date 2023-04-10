@@ -22,7 +22,7 @@ a:focus,
 a:active,
 a.active {
     outline: 0;
-    color: #{{ site.color.primary }};
+    color: #{{ site.color.tertiary }};
 }
 
 h1,
@@ -59,11 +59,11 @@ hr.star-primary:after {
 }
 
 hr.star-light {
-    border-color: #fff;
+    border-color: #{{ site.color.secondary }};
 }
 
 hr.star-light:after {
-    color: #fff;
+    color: #{{ site.color.secondary }};
     background-color: #{{ site.color.primary }};
 }
 
@@ -82,7 +82,7 @@ hr.star-primary:after {
 
 header {
     text-align: center;
-    color: #fff;
+    color: #{{ site.color.onPrimary }};
     background: #{{ site.color.primary }};
 }
 
@@ -180,7 +180,7 @@ section h2 {
 }
 
 section.success {
-    color: #fff;
+    color: #{{ site.color.onPrimary }};
     background: #{{ site.color.primary }};
 }
 
@@ -280,10 +280,10 @@ section.success {
 
 .btn-outline {
     margin-top: 15px;
-    border: solid 2px #fff;
+    border: solid 2px #{{ site.color.secondary }};
     font-size: 20px;
     color: #fff;
-    background: 0 0;
+    background: #{{ site.color.secondary }};
     transition: all .3s ease-in-out;
 }
 
@@ -291,8 +291,8 @@ section.success {
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-    border: solid 2px #fff;
-    color: #{{ site.color.primary }};
+    border: solid 2px #{{ site.color.secondaryDark }};
+    color: #{{ site.color.secondaryDark }};
     background: #fff;
 }
 
@@ -371,7 +371,7 @@ footer .footer-col {
 
 footer .footer-below {
     padding: 10px 0;
-    background-color: #{{ site.color.secondary-dark }};
+    background-color: #{{ site.color.secondaryDark }};
 }
 
 .btn-social {
@@ -472,7 +472,7 @@ footer .footer-below {
 }
 
 .navbar-nav>.active>a {
-    background-color: #{{ site.color.secondary-dark }} !important;
+    background-color: #{{ site.color.secondaryDark }} !important;
 }
 
 /* Fix modal mouse wheel issues */
