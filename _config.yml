@@ -17,18 +17,49 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+permalink: /:year/:i_month/:i_day/:title.html
+exclude: [Rakefile, Gemfile, Gemfile.lock, README.markdown, Capfile, bin, s3_website.yml, tmp]
+paginate: 5
+paginate_path: /page:num/
+plugins:
+  - jekyll-paginate
+  - jekyll-include-cache
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-feed
+remote_theme: "mmistakes/so-simple-theme@3.2.0"
+#theme: jekyll-theme-so-simple
+skin: "/assets/css/skins/default.css"
+masthead_title: Home
 
-title: Home
-description: Melih Gültekin
-keywords: "android, kotlin, java, flutter"
-skills: "Android Developer - Software Engineer - Freelancer"
+title: "Melih Gültekin"
+description: "Android Developer - Software Engineer - Freelancer"
+keywords: "android, kotlin, java, engineer"
+logo: "/assets/images/profile.png"
+masthead_bio: "Android Geek since 2014, Software Engineer, Programmer, Clean Code follower, Open Source lover 😌"
+twitter:
+  username: melihgultekin
+
+category_archive_path: "/categories/#"
+tag_archive_path: "/tags/#"
+
+date_format: "%B %-d, %Y"
+read_time: true
+words_per_minute: 200
+
+search: true
 
 author:
-  name: Melih Gültekin
-  welcome: Hello there! 👋 I'm Melih Gültekin. Welcome to my page!
-  about: >- # this means to ignore newlines until "baseurl:"
-    Android Geek since 2014, Software Engineer, Programmer, Clean Code follower, Open Source lover 😌
-  social: Around the Web
+  location: "Randstad Area, The Netherlands"
+  picture: /assets/images/profile.png
+  bio: "Android Geek since 2014, Software Engineer, Programmer, Clean Code follower, Open Source lover 😌"
+  links:
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/melih-g%C3%BCltekin-a2a41464/"
+    - label: "github"
+      icon: "fab fa-fw fa-github-square"
+      url: "http://github.com/melomg"
 
 # Social networks usernames
 social:
@@ -53,66 +84,47 @@ footer:
 address:
   - line: Randstad Area, The Netherlands
 
-# Credits content
-credits: 'This website is built on top the <a href="https://github.com/jeromelachaud/freelancer-theme" target="_blank">Freelancer Theme</a>.'
+footer_links:
+  - title: "LinkedIn"
+    icon: "fab fa-fw fa-linkedin"
+    url: "https://www.linkedin.com/in/melih-g%C3%BCltekin-a2a41464/"
+  - title: "github"
+    icon: "fab fa-fw fa-github-square"
+    url: "http://github.com/melomg"
+  - title: "medium"
+    icon: "fab fa-fw fa-medium"
+    url: "https://medium.com/@mmelihgultekin"
+  - title: "stack-overflow"
+    icon: "fab fa-fw fa-stack-overflow"
+    url: "https://stackoverflow.com/users/3918109/melomg"
+  - title: "Twitter"
+    icon: "fab fa-fw fa-twitter-square"
+    url: "https://twitter.com/melihgultekin"
 
-# Build settings
-markdown: kramdown
-permalink: pretty
+url: "https://melihgultekin.dev/"
+feed:
+  path: feed.xml
 
-#for posts
 defaults:
+  # _posts
+  defaults:
+  # Post defaults
   - scope:
-      path: ""
-      type: "posts"
+      path: "_posts"
+      type: posts
     values:
-      permalink: ""
+      layout: post
+      comments: false
+      share: false
 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+locale: en-US
 
-# Minima date format
-# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
-minima:
-  date_format: "%b %-d, %Y"
+# Credits content
+credits: 'This website is built on top the <a href="https://github.com/mmistakes/so-simple-theme" target="_blank">So Simple Theme</a>.'
+copyright: Melih Gültekin
 
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
-
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-
-# Google webmaster tools
-google_verify:
-
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:
-
-# Color settings (hex-codes without the leading hash-tag)
-color:
-  primary: fff
-  onPrimary: 000000
-  outline: 000000
-  primary-rgb: "24,288,156"
-  secondary: 2c3e50
-  secondaryDark: 233140
-  tertiary: 18bc9c
+google_fonts:
+  - name: "Enriqueta"
+    weights: "400,500,600,700"
+  - name: "Lora"
+    weights: "400,400i,700,700i"
