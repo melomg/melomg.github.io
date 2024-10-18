@@ -1,5 +1,9 @@
 ---
 title: "Navigation Component — Common issues we can face"
+image:
+  path: /assets/images/2020-05-14-post-image-1.webp
+  thumbnail: /assets/images/2020-05-14-post-image-1-thumbnail.jpg
+  caption: "Photo by [Stefan Cosma](https://unsplash.com/@stefanbc) on [Unsplash](https://unsplash.com/)"
 tags:
   - android
   - jetpack-compose
@@ -100,6 +104,8 @@ logics to `SharedNavigationViewModel`. Here the latest snippet shows how I prefe
 I believe if we follow some practices and take some concerns into account, Navigation Component simplifies 
 fragment stack management and visualizes our app navigation which is something I find absulately useful as
 I also believe images speak louder than words.
+
+<iframe src="https://giphy.com/embed/xV8yCKieFElXpEU0fp" width="480" height="234" frameBorder="0" class="giphy-embed" allowFullScreen style="border:none;overflow:hidden;display:block;margin:0 auto;"></iframe><p><a href="https://giphy.com/gifs/CBSAllAccess-star-trek-discovery-std-xV8yCKieFElXpEU0fp"></a></p>
 
 *Thanks for reading… Please let me know your feedbacks and comments. Let’s jump to our destinations safely.*
 
