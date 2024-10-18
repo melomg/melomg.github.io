@@ -35,7 +35,7 @@ masthead_title: Home
 title: "Melih Gültekin"
 description: "Android Developer - Software Engineer - Freelancer"
 keywords: "android, kotlin, java, engineer"
-logo: "/assets/images/profile.png"
+logo: "/assets/images/profile.jpeg"
 masthead_bio: "Android Geek since 2014, Software Engineer, Programmer, Clean Code follower, Open Source lover 😌"
 twitter:
   username: melihgultekin
@@ -51,7 +51,7 @@ search: true
 
 author:
   location: "Randstad Area, The Netherlands"
-  picture: /assets/images/profile.png
+  picture: /assets/images/profile.jpeg
   bio: "Android Geek since 2014, Software Engineer, Programmer, Clean Code follower, Open Source lover 😌"
   links:
     - label: "LinkedIn"
