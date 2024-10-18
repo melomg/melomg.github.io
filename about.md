@@ -2,7 +2,7 @@
 layout: page
 title: About Melih
 ---
-<img src="assets/images/profile.jpeg" class="align-right" style="border-radius: 50%;"  alt="profile-pic">
+<img src="assets/images/profile.jpeg" class="align-right" style="border-radius: 50%;" width="250" height="250"  alt="profile-pic">
 
 Software engineer and Android Developer since Ice Cream Sandwich. I enjoy traveling, photography, playing table tennis, padel, chess and coding Android apps. I always enjoy to learn and use edge technologies with open mindset. A "Harry Potter books" fan, open source lover and clean code reader.
 
