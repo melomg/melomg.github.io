@@ -45,7 +45,7 @@ tag_archive_path: "/tags/#"
 
 date_format: "%B %-d, %Y"
 read_time: true
-words_per_minute: 200
+words_per_minute: 150
 
 search: true
 
