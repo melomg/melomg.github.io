@@ -22,7 +22,7 @@ Software engineer and Android Developer since Ice Cream Sandwich. I enjoy travel
 
 ## Media
 
-Not my thing but here my only appearance:
+Here my only appearance in a podcast:
 
 * [Google Glass at bol.com: A different way of looking at Technology
 ](https://techlab.bol.com/en/blog/google-glass-at-bol-com-a-different-way-of-looking-at-technology) with Niels de Vries, Erick Webbe
