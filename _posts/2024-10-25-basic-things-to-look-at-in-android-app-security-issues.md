@@ -27,7 +27,6 @@ But in this post, I'd like to share a short checklist on top of that when I revi
 9. [Unprotected Storage](#9--unprotected-storage)
 10. [Backup rules](#10--backup-rules)
 11. [Exported android components](#11--exported-android-components)
-12. [Biometric authentication](#12--biometric-authentication)
 
 ### 1- Supply chain attacks against Gradle
 
