@@ -8,6 +8,10 @@ Software engineer and Android Developer since Ice Cream Sandwich. I enjoy travel
 
 [See my Resume here](/assets/files/MelihGultekinCV.pdf){: .btn .btn--primary .btn--small}
 
+A bit quirky and eerie, but an interesting take on from NotebookLM to create a podcast about me using my website;
+
+../../assets/files/about-melih.wav
+
 ## Certificates
 
 | Name                                                                                                                                           | Issuer           | Issued date  | Link                                                                                                                                                                                    |
