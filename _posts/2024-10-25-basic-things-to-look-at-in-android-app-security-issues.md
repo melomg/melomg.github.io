@@ -27,6 +27,7 @@ But in this post, I'd like to share a short checklist on top of that when I revi
 9. [Unprotected Storage](#9--unprotected-storage)
 10. [Backup rules](#10--backup-rules)
 11. [Exported android components](#11--exported-android-components)
+12. [Clipboard danger](#12--clipboard-danger)
 
 ### 1- Supply chain attacks against Gradle
 
@@ -134,6 +135,19 @@ check that if sensitive data is excluded via backup rules. Otherwise, with tools
 Usage of permissions when content providers exported is important.
 Android [docs](https://developer.android.com/privacy-and-security/risks/access-control-to-exported-components)
 and [this article](https://blog.oversecured.com/Android-Access-to-app-protected-components/) covers more cases.
+
+### 12- Clipboard danger
+
+Even though Android offers a secure flag system for clips and recommends deleting clipboard content after a defined period,
+as explained [here](https://developer.android.com/privacy-and-security/risks/secure-clipboard-handling), 
+3rd-party keyboard apps like 
+[Samsung Keyboard can still store copied content](https://www.reddit.com/r/samsunggalaxy/comments/mtakqq/how_to_disable_the_clipboard_history_this_is_a/) 
+for extended periods. 
+This creates an opportunity for attackers—not by targeting the clipboard manager itself, 
+but by exploiting these 3rd-party apps to capture sensitive data. 
+There is more [here](https://redfoxsec.com/blog/protecting-android-clipboard-content/) on what attackers can do. 
+So last but not least check for me would be to ensure that highly sensitive data, 
+such as payment card CVCs or passwords, is never copied to the clipboard.
 
 I tried to cut the list here since to gather all the thoughts took a lot of time but many more to add in the future…
 <iframe src="https://giphy.com/embed/WjAkQjz7h9ESA" width="480" height="250" style="border:none;overflow:hidden;display:block;margin:0 auto;" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/doctor-who-funny-matt-smith-WjAkQjz7h9ESA"></a></p>
