@@ -7,7 +7,7 @@ Development
 ```bash
 gem install bundler # first time only
 bundle install # first time only
-bundle exec jekyll serve
+bundle exec jekyll serve --trace
 ```
 
 ### Troubleshoot
