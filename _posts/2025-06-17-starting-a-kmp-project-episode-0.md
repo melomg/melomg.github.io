@@ -1,8 +1,8 @@
 ---
 title: "Starting a kmp project - Episode 0"
 image:
-  path: /assets/images/2025-06-17-post-image-2.png
-  thumbnail: /assets/images/2025-06-17-post-image-2.png
+  path: /assets/images/2025-06-17-post-image.png
+  thumbnail: /assets/images/2025-06-17-post-image.png
   caption: "Photo by [Marc Reichelt](https://unsplash.com/@mreichelt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/)"
 tags:
   - kmp
