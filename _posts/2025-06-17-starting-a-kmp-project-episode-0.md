@@ -33,6 +33,7 @@ And hopefully the KMP template of mine will try to help you get started with the
     - Build conventions
     - Flavours
     - Mocks
+    - Test fixtures
     - Build info
     - Preferences
     - Storage
@@ -47,10 +48,11 @@ And hopefully the KMP template of mine will try to help you get started with the
     - Static code analysis
     - Unit testing
     - Test coverage
+    - Obfuscation & Shrinking
     - Pipelines
     - Releasing
     - Force updates
-    - Dependency updater
+    - Dependency management
 - UI
     - Design system
     - Gallery App
