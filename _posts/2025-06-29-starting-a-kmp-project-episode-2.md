@@ -6,7 +6,7 @@ tags:
   - lint
   - detekt
   - multiplatform
-date: 2025-06-22
+date: 2025-06-29
 layout: post
 ---
 
@@ -16,11 +16,11 @@ If you'd like to just see the implementation and move forward quickly, you can j
 
 ### The story
 
-Speaking from android background, we have couple of options like [detekt](https://detekt.dev/docs/intro), [ktlint](https://pinterest.github.io/ktlint/latest/) on top of Android's [lint tool](https://developer.android.com/studio/write/lint) for static code analysis and more (pmd, checkstyle etc...). Code formatters like [Spotless](https://github.com/diffplug/spotless) works well with `ktlint`. 
+Speaking from an Android background, we have a couple of options like [detekt](https://detekt.dev/docs/intro), [ktlint](https://pinterest.github.io/ktlint/latest/) on top of Android's [lint tool](https://developer.android.com/studio/write/lint) for static code analysis and more (pmd, checkstyle etc...). Code formatters like [Spotless](https://github.com/diffplug/spotless) work well with `ktlint`. 
 I'm not gonna compare `ktlint` and `detekt` in this article (it has been done many times in the past in different articles like in [Medium](https://medium.com/@SaezChristopher/detekt-vs-ktlint-2024-which-linter-is-the-best-for-an-android-project-d1b7585a0103) and in [ChatGPT](https://chatgpt.com/s/t_6860547358708191a1547bbf7ecdc616)), but both tools can work for Kotlin Multiplatform projects and allow analysis of platform-specific code (JVM, JS, Native).
 I'm more used to working with `detekt` and like their suggestion to [tweak the rules](https://detekt.dev/docs/introduction/compose/) to work with Google's [Compose API Guidelines](https://android.googlesource.com/platform/frameworks/support/+/androidx-main/compose/docs/compose-api-guidelines.md).
 
-But the problem is by default, `Detekt` looks for Kotlin and Java source codes within a standard Gradle project as mentioned [here](https://github.com/detekt/detekt/discussions/3467). You can probably see these discussions when you Google how to make `Detekt` work for a KMP project (by the time of writing);
+But the problem is by default, `Detekt` looks for Kotlin and Java source code within a standard Gradle project as mentioned [here](https://github.com/detekt/detekt/discussions/3467). You can probably see these discussions when you Google how to make `Detekt` work for a KMP project (by the time of writing);
 
 - [how are you using Detekt on multiplatform projects...](https://slack-chats.kotlinlang.org/t/8082454/how-are-you-using-detekt-on-multiplatform-projects-these-day)
 - [If I wanted to run detekt tasks on all KMP source ...](https://slack-chats.kotlinlang.org/t/12654956/if-i-wanted-to-run-detekt-tasks-on-all-kmp-source-sets-in-my)
@@ -28,15 +28,15 @@ But the problem is by default, `Detekt` looks for Kotlin and Java source codes w
 - Running detekt on JVM target (in KMP project) doesn't run against the common source set [https://github.com/detekt/detekt/issues/7073](https://github.com/detekt/detekt/issues/7073)
 - There is no `detektCommonMain` task but there is `detektMetadataMain` as mentioned [here](https://github.com/detekt/detekt/issues/3665)
 
-For the first 2 issues, I agree that it could be nice to have a common task with no configuration need. For the 3rd and 4th issues, it looks like a source set issue to me. 
-For the last one, it looks like a nice suggestion but it usually gave issues for generated sources to me (although I know I can ignore paths). It's interesting that a small task like implementing `Detekt` can be such a headache at least by the time of writing (maybe there is a nicer solution but Google search makes me think that community is having a same trouble).
+For the first 2 issues, I agree that it could be nice to have a common task with no configuration needed. For the 3rd and 4th issues, it looks like a source set issue to me. 
+For the last one, it looks like a nice suggestion but it usually gave issues for generated sources to me (although I know I can ignore paths). It's interesting that a small task like implementing `Detekt` can be such a headache at least by the time of writing (maybe there is a nicer solution but Google search makes me think that community is having the same trouble).
 
-Looking at the KMP samples in jetbrains [here](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html), none of them had static code analysis tool for `detekt` (Maybe I missed some, let me know if there is a nice example please).
+Looking at the KMP samples in jetbrains [here](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html), none of them had `detekt` configured (Maybe I missed some, let me know if there is a nice example please).
 [DroidconKotlin](https://github.com/touchlab/DroidconKotlin/blob/main/build.gradle.kts) example has a nice setup for `ktlint` but they only support for iOS and Android atm.
 Even [kotlinconf-app](https://github.com/JetBrains/kotlinconf-app/) didn't have any static code analysis tool which surprised me a lot. 
 
-Considering all those, I could've also chosen to go with separate static code analysis for separate platforms (Swift lint for Swift) like mentioned in this [nice article](https://diamantidis.github.io/2019/09/01/kotlin-multiplatform-project-code-styling-for-ios-and-android). But considering that I'm planning on writing almost no Swift, I decided to stay with one static analysis tool on top of the Lint. 
-At the end, I decided to include all the source sets myself by using `source.setFrom(...)` configuration feature of `Detekt` for each sub gradle project. This reports the issues multiple times but so far looked pretty reliable.
+Considering all these, I could've also chosen to go with separate static code analysis for separate platforms (Swift lint for Swift) like mentioned in this [nice article](https://diamantidis.github.io/2019/09/01/kotlin-multiplatform-project-code-styling-for-ios-and-android). But considering that I'm planning on writing almost no Swift, I decided to stay with one static analysis tool on top of the Lint. 
+At the end, I decided to include all the source sets myself by using `source.setFrom(...)` configuration feature of `Detekt` for each sub-Gradle project. This reports the issues multiple times but so far has looked pretty reliable.
 
 If you'd like to see how I implemented this, you can check [the PR](https://github.com/melomg/KMP-Template/pull/25/files).
 
@@ -49,11 +49,11 @@ If you'd like to see how I implemented this, you can check [the PR](https://gith
     run: ./gradlew lintDebug
 ```
 
-I could have just used `./gradlew check` task in CI since `detekt` and `lint` tasks does also run when `check` task run but imo `check` task does a lot. But if you want to follow standard Gradle lifecycle practices, and you're OK with less fine-grained control, then `check` task is not bad.
-I wanted to optimize CI time and only run certain checks in certain situations like running lint only on debug build type, therefore I separated `detekt` and `lint` tasks and run only them which saved me sometime. I believe it also gives faster feedback and better visibility into where a failure happened.
+I could have just used `./gradlew check` task in CI since `detekt` and `lint` tasks also run when `check` task runs, but IMO the `check` task does a lot. But if you want to follow standard Gradle lifecycle practices, and you're OK with less fine-grained control, then the `check` task is not bad.
+I wanted to optimize CI time and only run certain checks in certain situations like running lint only on debug build type, therefore I separated `detekt` and `lint` tasks and run only them which saved me some time. I believe it also gives faster feedback and better visibility into where a failure happened.
 But that might be just [how I eat the yogurt](https://tureng.com/en/turkish-english/her%20yi%C4%9Fidin%20bir%20yo%C4%9Furt%20yiyi%C5%9Fi%20vard%C4%B1r).
 
-One last suggestion, I came across with a [nice article here](https://medium.com/@santimattius/kmp-essential-tools-and-plugins-for-kotlin-multiplatform-application-development-6ffcccdef6a8) which mentions nice tools to have for a KMP project. 
+One last suggestion, I came across a [nice article here](https://medium.com/@santimattius/kmp-essential-tools-and-plugins-for-kotlin-multiplatform-application-development-6ffcccdef6a8) which mentions nice tools to have for a KMP project. 
 
 We can now tick one/two checks in the list below and rest remains 🎉;
 - Core
