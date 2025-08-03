@@ -1,5 +1,9 @@
 ---
 title: "Starting a kmp project - The one with build info - Episode 3"
+image:
+  path: /assets/images/2025-06-17-post-image.png
+  thumbnail: /assets/images/2025-06-17-post-image.png
+  caption: "Photo by [Marc Reichelt](https://unsplash.com/@mreichelt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/)"
 tags:
   - kmp
   - kotlin
@@ -133,7 +137,7 @@ I then decided to check other web frameworks to see how they handle these;
   of [Profiles feature](https://www.baeldung.com/spring-profiles#4-jvm-system-parameter) and
   `application.properties` to set app properties like the name of the app;
 
-<img src="/assets/images/2025-08-03-post-image.png" class="align-center" alt="application.properties file">
+<img src="/assets/images/2025-08-03-image-1.png" class="align-center" alt="application.properties file">
 
 Looks like again no first-class gradle support like Android has.
 
