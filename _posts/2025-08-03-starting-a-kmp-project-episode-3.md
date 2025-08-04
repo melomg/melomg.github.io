@@ -247,13 +247,13 @@ truth.
 
 - Changes are [in this PR](https://github.com/melomg/KMP-Template/pull/41/files).
 
-The disadvantages of the first design decision led me to think of using only app config files (
-application.properties) as a source of truth
+The disadvantages of the first design decision and design twice advice from John Ousterhout in the book of Philosophy of Software Design,
+led me to think of a second design which is using only app config files (application.properties) as a source of truth
 (I think it's a known concept on all platforms, like `.env.production` on the web, 
 `application.properties` in Spring Boot, or `.xcconfig` files on iOS etc...). Therefore, 
 decided to create a fake build type called `effectiveBuildType` (in order not to confuse it with
-android gradle plugin's build type field) where I would use it to access the right app properties
-for each platform and provide them at runtime via the buildkonfig plugin.
+Android Gradle plugin's build type field) where I would use it to access the right app properties
+for each platform and provide them at runtime via the `buildkonfig` plugin.
 
 To determine the `effectiveBuildType` was a bit a challenge. Somehow, providing it
 via [gradle project properties](https://docs.gradle.org/current/userguide/build_environment.html#setting_a_project_property)
