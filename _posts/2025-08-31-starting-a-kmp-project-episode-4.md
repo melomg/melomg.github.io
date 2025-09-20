@@ -53,6 +53,8 @@ But when it comes to KMP, we again face a lot of new challenges as these sources
 - [Logs Management in a Kotlin Multiplatform project](https://blog.thesurfcode.com/logs-management-in-kmp)
 - [Logging In Compose Multiplatform](https://medium.com/@mohaberabi98/logging-in-compose-multiplatform-a5cf750dbce0)
 
+And because of these challenges, we see every day a new logging library popping up because many are thinking that none of the logging libraries out there is exactly meeting their criteria. So in this post I’m not going to talk about a new library I created. Somewhat I could resist the temptation, and also I don’t think I can create a perfect divine logging library that checks every box by myself, nor do I think there could be one since everyone’s needs are different.
+
 At the time of writing this post, neither `Timber` nor `logcat` is KMP Native. So, I've looked for more and found these
 libraries;
 
