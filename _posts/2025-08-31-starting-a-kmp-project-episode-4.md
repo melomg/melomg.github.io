@@ -17,7 +17,7 @@ layout: post
 ### TL;DR for logging
 
 If you'd like to just see the implementation and move forward quickly, 
-you can just check [my PR](https://github.com/melomg/KMP-Template/pull/57/files). 
+you can just check [my commit](https://github.com/melomg/KMP-Template/commit/110c07217c85e008a23af4497940e27cc558477f). 
 Otherwise, bear with me a couple of minutes for some decision points.
 
 ### The story

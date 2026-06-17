@@ -17,7 +17,7 @@ In Android apps, we need the build info mainly for 3 purposes;
 
 1. To better help customers (if there is a customer support, then customers can see which app
    version they use, or even which platform version they use since not all users know how to see
-   those information and it is usually different/changing where to see this information between
+   those information, and it is usually different/changing where to see this information between
    platforms).
 2. To ship the app builds with secrets and environments like staging or acceptance looking APIs to
    do the testing without affecting prod
@@ -28,7 +28,7 @@ In Android apps, we need the build info mainly for 3 purposes;
    data in debug builds, disabling the testCoverage task in debug build for performance, disabling
    leakCanary in test automation, enabling Analytics in prod builds, etc...).
 
-Therefore build info;
+Therefore, build info;
 
 1. Should be able to provide different configuration for each build type (app version, name, secrets
    like API
@@ -94,29 +94,29 @@ productFlavors {
    `API_KEY` instance.
 2. `buildConfigField` enables us to access the values in runtime via generated `BuildConfig`
    file, and then we can read our `API_KEY` in runtime like `BuildConfig.API_KEY`.
-3. For getting secrets or control flags in gradle, we can first store them in `local.properties` or
+3. For getting secrets or control flags in Gradle, we can first store them in `local.properties` or
    any properties file that you know for sure will NOT end up in your version control system (Git),
    and then
-   we can read those properties to provide them in runtime with `buildConfigField` in gradle as
+   we can read those properties to provide them in runtime with `buildConfigField` in Gradle as
    mentioned earlier.
 
 ### iOS side:
 
-I'm less familiar with the iOS side, but I found a
+I'm less familiar with the iOS side, but I found
 a [nice article in medium](https://medium.com/@niranjanky14/understanding-build-schemes-build-configurations-and-xcconfig-files-in-xcode-372c344d8805)
 for iOS configuration. They've a similar implementation.
 It's not called `.properties` file but `.xcconfig` to store properties which supports different
 build types. It's not called build type but configuration and etc... Then, it is a matter of
 accessing the build info in runtime with `Bundle.main.infoDictionary?["API_KEY"]`.
-But even though those platforms have similar implementation, because we use gradle in the KMP
+But even though those platforms have similar implementation, because we use Gradle in the KMP
 project, I couldn't find a way to implement build types and flavors in a way that Android can with
-the gradle plugin.
+the Gradle plugin.
 
 ### Desktop side:
 
 [Another article](https://blog.joetr.com/adding-debug-checks-to-your-compose-multiplatform-project-android-ios-and-desktop)
 mentions that we can use System Properties to define the local properties to pass them to the
-application so the build info can be accessed in runtime later. But again no first-class gradle
+application so the build info can be accessed in runtime later. But again no first-class Gradle
 support like Android has.
 
 ### Wasm Web side:
@@ -139,14 +139,12 @@ I then decided to check other web frameworks to see how they handle these;
 
 <img src="/assets/images/2025-08-03-image-1.png" class="align-center" alt="application.properties file">
 
-Looks like again no first-class gradle support like Android has.
+Looks like again no first-class Gradle support like Android has.
 
 ### First design decision - Provide platform implementation for each platform separately
 
-- Changes are [in this PR](https://github.com/melomg/KMP-Template/pull/30/files).
-
-Considering that only Android has first-class gradle plugin support for build types and flavors,
-I've first decided that each platform would have it's own implementation. Although using
+Considering that only Android has first-class Gradle plugin support for build types and flavors,
+I've first decided that each platform would have its own implementation. Although using
 actual/expect on koin modules doesn't guarantee the module cohesion as stated in
 the [Koin Android Makers talk](https://www.youtube.com/watch?v=vYqJlN0rJL8&t=1024s), it made things
 easier for me, like providing Android context in `AndroidPlatform` so that I can check if app is
@@ -169,15 +167,15 @@ staging environments for the APIs that I'm gonna use, and I'd like to use it to 
 rehearsal goes via Firebase Distribution just before shipping the apps to their own stores.
 I wanted to keep the assembly process simple (I can ship the android app with `assembleStaging` and
 `assembleRelease`).
-Currently my `staging` buildType is almost similar to `release` buildType (it is
+Currently, my `staging` buildType is almost similar to `release` buildType (it is
 `initWith(getByName("release"))`), except package, app name, version and signing config is
 different.
 And I treated `release` build type as prod build where it is minified and obfuscated with prod
 signing config.
 
 But if you are working on a serious app, you might want to also enrich it with Flavor. For instance
-if you'd like to debug the prod app, you can create `prod`, `staging` flavors. Then you have an
-access to `prodRelease`, `prodDebug`, `stagingRelease`, `stagingDebug` builds which gives you more
+if you'd like to debug the prod app, you can create `prod`, `staging` flavors. Then you have access 
+to `prodRelease`, `prodDebug`, `stagingRelease`, `stagingDebug` builds which gives you more
 options to do more.
 
 --- 
@@ -199,7 +197,7 @@ mode, or for platform version name `userAgent` of `window` object, but there is 
 `appVersionCode` and `appVersionName` from a platform specific object like those Android and iOS
 provide (BuildConfig/NSBundle).
 
-But again there is no first-class gradle support here.
+But again there is no first-class Gradle support here.
 
 | App Version Code | App Version Name | Platform Version Name  | Build type | Is debuggable          |
 |------------------|------------------|------------------------|------------|------------------------|
@@ -221,7 +219,7 @@ And here the problem starts, how to get this build info in runtime for each plat
 types (configurations as iOS calls it).
 
 Looking
-at [these suggested KMP samples by Jetbrains](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html),
+at [these suggested KMP samples by JetBrains](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html),
 I couldn't find any example that make use of Build Type.
 
 Though I could find 2 build config plugins that kinda works with flavors (but not build types);
@@ -245,8 +243,6 @@ truth.
 
 ### Second design decision - Provide platform implementation from app properties via buildkonfig plugin
 
-- Changes are [in this PR](https://github.com/melomg/KMP-Template/pull/41/files).
-
 The disadvantages of the first design decision and design twice advice from John Ousterhout in the book of Philosophy of Software Design,
 led me to think of a second design which is using only app config files (application.properties) as a source of truth
 (I think it's a known concept on all platforms, like `.env.production` on the web, 
@@ -267,20 +263,20 @@ That meant, I had to create run configuration for all platforms and for all buil
 But once created, I could run these configurations, which would first update `effectiveBuildType` in `local.properties`.
 Then, when running the app, it would read `effectiveBuildType` to provide the correct app properties for the Platform data class.
 
-The disadvantage of this was that I had to create a lot of run configurations even for android and
+The disadvantage of this was that I had to create a lot of run configurations even for android, and
 now I couldn't depend on Android Studio IDE's Build Variant selection, which, as an Android developer, 
 I was very used to.
 
 ### Third design decision - Provide platform implementation from detected Android build type or system environment
 
-- Changes are [in this PR](https://github.com/melomg/KMP-Template/pull/42/files).
+- Changes are [in this commit](https://github.com/melomg/KMP-Template/commit/a06863e5d5f4c4156675d8e2f1b13a76dbfdd466).
 
 Since I was used to Android Studio IDE's Build Variant selection a lot, it was a shame not being
 able to use it anymore.
 [This article](https://sujanpoudel.me/blogs/managing-configurations-for-different-environments-in-kmp/) 
 made me think it might still be possible to use Build variant selection.
 This led me to improve on top of the 2nd design solution where providing the `effectiveBuildType`
-from gradle's [startParameter](https://docs.gradle.org/current/kotlin-dsl/gradle/org.gradle/-start-parameter/index.html)
+from Gradle's [startParameter](https://docs.gradle.org/current/kotlin-dsl/gradle/org.gradle/-start-parameter/index.html)
 for Android (so that I could use the Build variant selection), or from iOS or from System
 rather than providing the `effectiveBuildType` via the `updateEffectiveBuildType` **BeforeRunTask**.
 In the article itself, somehow it's only using `getAndroidBuildVariantOrNull` and `System.getenv()`
@@ -322,7 +318,7 @@ make a better decision.
 - [Spring Profiles](https://www.baeldung.com/spring-profiles#4-jvm-system-parameter)
 - [Configuring the Build Environment](https://docs.gradle.org/current/userguide/build_environment.html)
 - [Staging vs. Production: The Final Stages of Web Development](https://www.shopify.com/blog/staging-vs-production)
-- [Staging Environment: Software Testing in Staging Explained](https://www.designrush.com/agency/software-development/trends/staging-environment))
+- [Staging Environment: Software Testing in Staging Explained](https://www.designrush.com/agency/software-development/trends/staging-environment)
 
 Imo this was one essential topic to get started with KMP and hope to get feedbacks to make this KMP
 journey better 🎉 And an update on the **Checklist**;
