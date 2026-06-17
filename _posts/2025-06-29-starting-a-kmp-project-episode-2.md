@@ -12,7 +12,7 @@ layout: post
 
 ### TL;DR for detekt
 
-If you'd like to just see the implementation and move forward quickly, you can just check [my PR](https://github.com/melomg/KMP-Template/pull/25/files). Otherwise bear with me a couple of minutes for some decision points. 
+If you'd like to just see the implementation and move forward quickly, you can just check [this commit](https://github.com/melomg/KMP-Template/commit/f2c7efcc980b529fe1b5eeeaa26fe2957189afc8). Otherwise, bear with me a couple of minutes for some decision points. 
 
 ### The story
 
@@ -31,14 +31,14 @@ But the problem is by default, `Detekt` looks for Kotlin and Java source code wi
 For the first 2 issues, I agree that it could be nice to have a common task with no configuration needed. For the 3rd and 4th issues, it looks like a source set issue to me. 
 For the last one, it looks like a nice suggestion but it usually gave issues for generated sources to me (although I know I can ignore paths). It's interesting that a small task like implementing `Detekt` can be such a headache at least by the time of writing (maybe there is a nicer solution but Google search makes me think that community is having the same trouble).
 
-Looking at the KMP samples in jetbrains [here](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html), none of them had `detekt` configured (Maybe I missed some, let me know if there is a nice example please).
+Looking at the KMP samples in JetBrains [here](https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-samples.html), none of them had `detekt` configured (Maybe I missed some, let me know if there is a nice example please).
 [DroidconKotlin](https://github.com/touchlab/DroidconKotlin/blob/main/build.gradle.kts) example has a nice setup for `ktlint` but they only support for iOS and Android atm.
 Even [kotlinconf-app](https://github.com/JetBrains/kotlinconf-app/) didn't have any static code analysis tool which surprised me a lot. 
 
 Considering all these, I could've also chosen to go with separate static code analysis for separate platforms (Swift lint for Swift) like mentioned in this [nice article](https://diamantidis.github.io/2019/09/01/kotlin-multiplatform-project-code-styling-for-ios-and-android). But considering that I'm planning on writing almost no Swift, I decided to stay with one static analysis tool on top of the Lint. 
 At the end, I decided to include all the source sets myself by using `source.setFrom(...)` configuration feature of `Detekt` for each sub-Gradle project. This reports the issues multiple times but so far has looked pretty reliable.
 
-If you'd like to see how I implemented this, you can check [the PR](https://github.com/melomg/KMP-Template/pull/25/files).
+If you'd like to see how I implemented this, you can check [this commit](https://github.com/melomg/KMP-Template/commit/f2c7efcc980b529fe1b5eeeaa26fe2957189afc8).
 
 ### Little remark
 ```yaml
