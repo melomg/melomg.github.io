@@ -29,13 +29,14 @@ Unit testing in a Kotlin Multiplatform project brings its own set of unique chal
 
 ### Test Doubles
 
-Choosing the test double kind does also depend on whether you are a classicist or a mockist. See [ClassicalAndMockistTesting](https://martinfowler.com/articles/mocksArentStubs.html#ClassicalAndMockistTesting). In the KMP world, this choice is even more significant because of the tooling limitations on non-JVM platforms.
+Choosing the test double kind does also depend on whether you are a classicist or a mockist. See [Classical And Mockist Testing](https://martinfowler.com/articles/mocksArentStubs.html#ClassicalAndMockistTesting). In the KMP world, this choice is even more significant because of the tooling limitations on non-JVM platforms.
 
 #### Usage of Mocks
 
 Then we have **Mocks**.
 
-> "**Mocks** are pre-programmed with expectations which form a specification of the calls they are expected to receive." by Martin Fowler
+> "**Mocks** are pre-programmed with expectations which form a specification of the calls they are expected to receive." 
+> - by Martin Fowler
 
 > So if you mock too much, you may wind up with test suites that are slow, fragile, and complicated; and you may also damage the design of your application.
 > Mock across architecturally significant boundaries, but not within those boundaries.
@@ -45,7 +46,9 @@ Nothing much to add to that. I'm a **classicist** when I'm testing within the bo
 
 In KMP, mocking is tricky. Coming from an Android background, most of us are used to `MockK`, but `MockK` relies heavily on reflection, which doesn't work on Kotlin/Native (iOS, web). This leads to a choice: do we use a KMP mocking library like [MocKMP](https://github.com/kosi-libs/MocKMP), [KMock](https://github.com/bitPogo/kmock), [Mockative](https://github.com/mockative/mockative), [Mokkery](https://github.com/lupuuss/Mokkery) which many of them had issues with KSP and some not maintained anymore, or do we stick to `MockK` only for our JVM/Android tests?
 
-For this template project, I decided to stay with `MockK` for the `androidHostTest` while targeting the JVM/Android side primarily. (Most of the unit tests are decoupled from platform-specific logics, so ideally, it shouldn't mostly matter on which platform they run.)
+For this template project, I decided to stay with `MockK` for the `androidHostTest` while targeting the JVM/Android side primarily. (Most of the unit tests are decoupled from platform-specific logics, so ideally, it shouldn't mostly matter on which platform they run.) With that, the current dependency graph looks like this, keeping the graph height to 3:
+
+<img src="/assets/images/2026-10-18-dependency-graph.webp" class="align-center" alt="KMP Template Project Dependency Graph">
 
 #### Usage of Fake & Stub
 
